@@ -1,0 +1,28 @@
+# Dependency directory
+node_modules/
+
+#logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# TAP Coverage
+coverage
+.nyc_output
+
+# Other staff
+.DS_Store
+package-lock.json
+dist/
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.memory-card.json
