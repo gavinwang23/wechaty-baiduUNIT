@@ -4,7 +4,7 @@
  * @Author: wangjunwei
  * @Date: 2020-07-07 13:47:16
  * @LastEditors: wangjunwei
- * @LastEditTime: 2020-07-10 00:46:28
+ * @LastEditTime: 2020-07-29 21:03:35
  */ 
 
 import {
@@ -13,9 +13,22 @@ import {
     log,
     Message,
   }                   from 'wechaty'
-  import {
+import {
     matchers,
-  }                   from 'wechaty-plugin-contrib'
+}                   from 'wechaty-plugin-contrib'
+
+export interface WechatyBaiduUnitConfig {
+  contact?     : matchers.ContactMatcherOptions,
+  room?        : matchers.RoomMatcherOptions,
+  mention?     : boolean,
+  language?    : matchers.LanguageMatcherOptions,
+  skipMessage? : matchers.MessageMatcherOptions,
+  minScore?: number,
+
+  baidu_apikey?     : string,
+  baidu_secretkey? : string,
+  resourceName?    : string,
+}
 
 var https = require('https');
 var request = require("request")
@@ -77,7 +90,7 @@ function requestToken(){
  * @param {String} info
  * @return {Promise}
  */
-module.exports = function requestBot(info){
+function WechatyBaiduUnit(info){
     return new Promise((resolve, reject) => {
         //请求聊天接口参数准备
         
@@ -133,3 +146,5 @@ module.exports = function requestBot(info){
         //console.log(send)
     })
 }
+
+export { WechatyBaiduUnit }
