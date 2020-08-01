@@ -1,20 +1,26 @@
-import { WechatyBaiduUnit } from 'wechaty-baiduunit'
-import { Wechaty } from 'wechaty'
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: wangjunwei
+ * @Date: 2020-07-27 23:49:05
+ * @LastEditors: wangjunwei
+ * @LastEditTime: 2020-08-01 23:27:41
+ */ 
+import { WechatyBaiduUnit } from '../src/mod'
+//const WechatyBaiduUnit = require("../src/plugin.ts")
+//import { Wechaty } from 'wechaty'
 
 const config = {
-  mention: true, // default true: require mention the bot in room.
-  room: true,
-  contact: true, // enable direct message.
-
-  /**
-   * BaiduUnit Service API
-   */
   baidu_apikey : 'Adwf4v3V7wa1CiN5WloH2PkP',
   baidu_secretkey :'rQn3Tap4pcahCBSwdjihxyv3oZTKWFcZ',
   service_id: 'S31458',
 }
 
-const BaiduUnitPlugin = WechatyBaiduUnit(config)
+let BaiduUnitPlugin =  WechatyBaiduUnit("nihao")
 
-const wechaty = new Wechaty()
-wechaty.use(BaiduUnitPlugin)
+console.log("=============================")
+console.log(BaiduUnitPlugin)
+console.log("=============================")
+
+export { }
+

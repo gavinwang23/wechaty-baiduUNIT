@@ -4,27 +4,10 @@
  * @Author: wangjunwei
  * @Date: 2020-07-07 13:47:16
  * @LastEditors: wangjunwei
- * @LastEditTime: 2020-07-29 21:03:35
+ * @LastEditTime: 2020-08-01 23:27:24
  */ 
 
-import {
-    Wechaty,
-    WechatyPlugin,
-    log,
-    Message,
-  }                   from 'wechaty'
-import {
-    matchers,
-}                   from 'wechaty-plugin-contrib'
-
 export interface WechatyBaiduUnitConfig {
-  contact?     : matchers.ContactMatcherOptions,
-  room?        : matchers.RoomMatcherOptions,
-  mention?     : boolean,
-  language?    : matchers.LanguageMatcherOptions,
-  skipMessage? : matchers.MessageMatcherOptions,
-  minScore?: number,
-
   baidu_apikey?     : string,
   baidu_secretkey? : string,
   resourceName?    : string,
@@ -33,13 +16,12 @@ export interface WechatyBaiduUnitConfig {
 var https = require('https');
 var request = require("request")
 var qs = require('querystring');
-const config2 = require('./config.ts')
 
 //获取token
 const param = qs.stringify({
     'grant_type': 'client_credentials',
-    'client_id': config2.baidu_apikey,
-    'client_secret': config2.baidu_secretkey
+    'client_id': 'Adwf4v3V7wa1CiN5WloH2PkP',
+    'client_secret': 'rQn3Tap4pcahCBSwdjihxyv3oZTKWFcZ'
 });
 
 var baidutoken
@@ -90,12 +72,12 @@ function requestToken(){
  * @param {String} info
  * @return {Promise}
  */
-function WechatyBaiduUnit(info){
+function WechatyBaiduUnit (info){
     return new Promise((resolve, reject) => {
         //请求聊天接口参数准备
         
         var token = qs.stringify({
-            'access_token': baidutoken
+            'access_token': '24.0656ee5c202b325588145f78fe24430b.2592000.1596689746.282335-21168496'
         });
         var options = {
             hostname: 'aip.baidubce.com',
@@ -119,7 +101,8 @@ function WechatyBaiduUnit(info){
                     rpcResult = JSON.parse(data)
                     //console.log(data)
                     console.log(rpcResult)
-                    send=rpcResult.result.response_list[0].action_list[0].say
+                    //send=rpcResult.result.response_list[0].action_list[0].say
+                    send="ok"
                     //打印回复的消息
                     //console.log(send)
                     resolve(send)
@@ -147,4 +130,4 @@ function WechatyBaiduUnit(info){
     })
 }
 
-export { WechatyBaiduUnit }
+export{ WechatyBaiduUnit }
